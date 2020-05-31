@@ -14,6 +14,7 @@ struct Setting: View {
     @State var nightModeToggle = false
     @State var showingDetail4 = false
     @State var showingDetail5 = false
+    
     var body: some View {
         ZStack{
             VStack {
@@ -172,32 +173,17 @@ struct BtnView: View {
     
 }
 
-struct profileView: View {
-    
-    var title = ""
-    var content:String? = nil
-    
-    var body: some View {
-        HStack {
-               
-            Text(title)
-            Spacer()
-            if content != nil{
-                Text(content!)
-                Image(systemName: "chevron.right")
-            }
-       }
-        .foregroundColor(Color(#colorLiteral(red: 0.3583333194255829, green: 0.35385414958000183, blue: 0.35385414958000183, alpha: 1)))
-        .padding(.leading,35)
-        .padding(.trailing,35)
-        .font(.system(size: 18))
-        
-    }
-    
-}
-
 struct Detail1: View {
-
+    @State var data = [
+        Card(image: "avatar-baby1", cardColor: "Card_Color1", name: "蔡桃貴", year: "2018"),
+        Card(image: "avatar-baby2", cardColor: "Card_Color2", name: "蔡波能", year: "2020"),
+        Card(image: "avatar-baby3", cardColor: "Card_Color3", name: "桃~貴", year: "2018"),
+        Card(image: "avatar-baby-plus", cardColor: "Card_Color1", name: "你的寶貝", year: "2020")
+    ]
+    @State var tap1:Bool = false
+    @State var tap2:Bool = false
+    @State var tap3:Bool = false
+    @State var tap4:Bool = false
     var body: some View {
         ZStack {
             VStack(spacing:0) {
@@ -229,11 +215,41 @@ struct Detail1: View {
                         
                         
                     }.offset(x: 0, y: -80/2))
-                VStack {
-                    profileView(title: "Name", content: "超級奶爸")
-                    profileView(title: "Email", content: "nightbar@gmail.com")
-                    profileView(title: "Status", content: "孩子的爸")
-                }
+                ScrollView(.vertical, showsIndicators: false){
+                    VStack {
+                        profileView(title: "Name", content: "超級奶爸")
+                        profileView(title: "Email", content: "nightbar@gmail.com")
+                        profileView(title: "Status", content: "孩子的爸")
+                        ScrollView(.horizontal, showsIndicators: false){
+                            
+                            HStack(spacing:20){
+                                
+                                ForEach(self.data){ i in
+                                    GeometryReader{ geometry in
+                                        CardView(d: i)
+                                            .rotation3DEffect(Angle(degrees: (Double(geometry.frame(in: .global).minX)-35) / -25), axis: (x: 0, y: 10.0, z: 0))
+                                            .onTapGesture{
+                                                if i.id == 0 {
+                                                    
+                                                }
+                                            }
+                                    }.frame(width: 180, height:250)
+                                    
+                                }
+                                
+                                
+                            }
+                            
+                            
+                        }
+                        .frame(width: UIScreen.main.bounds.width, height:250)
+                        .padding(.leading, 35)
+                        
+                    }
+                }.animation(.spring())
+                
+                
+                
                 
                 Spacer()
             }
@@ -290,3 +306,54 @@ struct Detail5: View {
     }
     
 }
+
+
+
+struct CardView: View {
+    var d:Card
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(Color(d.cardColor)).overlay(
+                VStack {
+                    Image(d.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width:180,height: 110)
+                        .clipped()
+                    Spacer()
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(d.name)
+                                .font(.title)
+                                .fontWeight(.black)
+                                .foregroundColor(.primary)
+                                .lineLimit(3)
+                            Text(d.year.uppercased())
+                                .font(.callout)
+                                .foregroundColor(.secondary)
+                        }
+                        .layoutPriority(100)
+                        Spacer()
+                    }
+                    .padding(.bottom, 10)
+                    .padding(.leading, 10)
+                }
+                
+                
+        )
+        .frame(width:180,height: 230)
+        .cornerRadius(10)
+        .overlay(
+            
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color(d.cardColor+"-Border"), lineWidth: 1)
+            
+        )
+        
+        
+    }
+    
+}
+
+
