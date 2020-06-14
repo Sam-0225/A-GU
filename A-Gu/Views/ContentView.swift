@@ -16,15 +16,15 @@ struct ContentView: View {
         VStack(spacing: 0){
             GeometryReader { geometry in
                 if self.index  == 0{
-                    Home()
+                    HomeView()
                 }else if self.index == 1{
-                    Discussion()
+                    DiscussionView()
                 }else if self.index == 2{
-                    Patient_Instructions()
+                    Patient_InstructionsView()
                 }else if self.index == 3{
-                    Setting()
+                    SettingView()
                 }else if self.index == 4{
-                    Record()
+                    RecordView()
                 }
             }
             TabBar(index: self.$index)
@@ -126,3 +126,10 @@ struct Curve : Shape {
 
 
 
+class Host: UIHostingController<ContentView> {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        
+        return .lightContent
+    }
+}

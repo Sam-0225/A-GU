@@ -6,7 +6,9 @@ target 'A-Gu' do
   use_frameworks!
 
   # Pods for A-Gu
+
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 5.2'
-  
+  pod 'FSCalendar'
+  pod 'StepperView','~> 1.5.1'
 end

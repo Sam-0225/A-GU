@@ -1,5 +1,5 @@
 //
-//  Record.swift
+//  Discussion.swift
 //  A-Gu
 //
 //  Created by Sam on 2020/5/15.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct Record: View {
+struct DiscussionView: View {
     var body: some View {
-        Text("Record")
+        Text("Discussion")
     }
 }
 
-struct Record_Previews: PreviewProvider {
+struct Discussion_Previews: PreviewProvider {
     static var previews: some View {
-        Record()
+        DiscussionView()
     }
 }

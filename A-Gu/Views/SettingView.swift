@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Setting: View {
+struct SettingView: View {
     @State var showingDetail1 = false
     @State var showingDetail2 = false
     @State var nightModeToggle = false
@@ -175,15 +175,12 @@ struct BtnView: View {
 
 struct Detail1: View {
     @State var data = [
-        Card(image: "avatar-baby1", cardColor: "Card_Color1", name: "蔡桃貴", year: "2018"),
-        Card(image: "avatar-baby2", cardColor: "Card_Color2", name: "蔡波能", year: "2020"),
-        Card(image: "avatar-baby3", cardColor: "Card_Color3", name: "桃~貴", year: "2018"),
-        Card(image: "avatar-baby-plus", cardColor: "Card_Color1", name: "你的寶貝", year: "2020")
+        CardModel(image: "avatar-baby1", cardColor: "Card_Color1", name: "蔡桃貴", year: "2018"),
+        CardModel(image: "avatar-baby2", cardColor: "Card_Color2", name: "蔡波能", year: "2020"),
+        CardModel(image: "avatar-baby3", cardColor: "Card_Color3", name: "桃~貴", year: "2018"),
+        CardModel(image: "avatar-baby-plus", cardColor: "Card_Color1", name: "你的寶貝", year: "2020")
     ]
-    @State var tap1:Bool = false
-    @State var tap2:Bool = false
-    @State var tap3:Bool = false
-    @State var tap4:Bool = false
+
     var body: some View {
         ZStack {
             VStack(spacing:0) {
@@ -226,23 +223,15 @@ struct Detail1: View {
                                 
                                 ForEach(self.data){ i in
                                     GeometryReader{ geometry in
-                                        CardView(d: i)
+                                        Baby_Profile_CardView(d: i)
                                             .rotation3DEffect(Angle(degrees: (Double(geometry.frame(in: .global).minX)-35) / -25), axis: (x: 0, y: 10.0, z: 0))
-                                            .onTapGesture{
-                                                if i.id == 0 {
-                                                    
-                                                }
-                                            }
-                                    }.frame(width: 180, height:250)
+                                            
+                                    }.frame(width: 180, height: 400)
                                     
                                 }
-                                
-                                
                             }
-                            
-                            
                         }
-                        .frame(width: UIScreen.main.bounds.width, height:250)
+                        .frame(width: UIScreen.main.bounds.width)
                         .padding(.leading, 35)
                         
                     }
@@ -309,8 +298,9 @@ struct Detail5: View {
 
 
 
-struct CardView: View {
-    var d:Card
+struct Baby_Profile_CardView: View {
+    @State var fold = false
+    @State var d:CardModel
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
@@ -321,7 +311,7 @@ struct CardView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width:180,height: 110)
                         .clipped()
-                    Spacer()
+                    
                     HStack {
                         VStack(alignment: .leading) {
                             Text(d.name)
@@ -335,21 +325,69 @@ struct CardView: View {
                         }
                         .layoutPriority(100)
                         Spacer()
+                        if !fold {
+                            Image(systemName: "pencil")
+                                .font(.system(size: 23, weight: .heavy))
+                                .foregroundColor(.red)
+                            .padding()
+                        }
                     }
-                    .padding(.bottom, 10)
+                    .padding(.top, 45)
                     .padding(.leading, 10)
+                    
+                    if fold {
+                        HStack{
+                            VStack{
+                                HStack{
+                                    Text("乳名：")
+                                    TextField("寶貝的名字", text:self.$d.name, onEditingChanged: { (editing) in
+                                        print("onEditingChanged", editing)
+                                    }) {
+                                       print(self.$d.name)
+                                    }.textFieldStyle(RoundedBorderTextFieldStyle())
+                                }
+                                HStack{
+                                    Text("出生：")
+                                    TextField("出生的年份", text:self.$d.year, onEditingChanged: { (editing) in
+                                        print("onEditingChanged", editing)
+                                    }) {
+                                       print(self.$d.name)
+                                    }.textFieldStyle(RoundedBorderTextFieldStyle())
+                                }
+                                Button(action: {
+                                    self.fold = false
+                                } ) {
+                                    Text("更改")
+                                    .bold()
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .padding()
+                                        .foregroundColor(.black)
+                                    .background(Color(d.cardColor+"-Border"))
+                                    .cornerRadius(15)
+                                }
+                                
+                            }
+                            Spacer()
+                        }
+                        .padding(.top, 15)
+                        .padding(.leading, 10)
+                        .font(.callout)
+                    }
+                    
+                    Spacer()
                 }
                 
                 
         )
-        .frame(width:180,height: 230)
+        .frame(width:180, height: fold ? 400 : 230)
         .cornerRadius(10)
         .overlay(
-            
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color(d.cardColor+"-Border"), lineWidth: 1)
-            
         )
+        .onTapGesture {
+            self.fold = true
+        }
         
         
     }

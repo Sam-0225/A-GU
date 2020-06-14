@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Card: Identifiable {
+struct CardModel: Identifiable {
     var id = UUID()
     var image:String
     var cardColor:String
