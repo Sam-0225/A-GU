@@ -120,39 +120,67 @@ struct Record_Previews: PreviewProvider {
 struct Record_Diet: View {
     var body: some View {
         VStack {
-            RoundedRectangle(cornerRadius: 13)
-            .fill(LinearGradient(gradient: Gradient(stops: [
-                    .init(color: Color("icon_color_selected"), location: 0),
-                    .init(color: Color("Color"), location: 1)]),
-                        startPoint: UnitPoint(x: 0, y: 0),
-                        endPoint: UnitPoint(x: 0, y: 1)))
-            .frame(width: 160, height: 91)
+            Image("飲食紀錄")
+            .resizable()
+                .scaledToFit()
+            Spacer()
         }
     }
 }
 
 struct Record_Diapers: View {
     var body: some View {
-        Text("Second View")
+        VStack {
+            Image("尿布紀錄")
+            .resizable()
+                .scaledToFit()
+            Spacer()
+        }
     }
 }
 
 struct Record_Sleep: View {
+    
     var body: some View {
-        Text("Second View")
+        VStack {
+            Image("睡眠紀錄")
+            .resizable()
+                .scaledToFit()
+            
+            Spacer()
+        }
     }
 }
 
 struct Record_Vaccine: View {
+    @State var imgSelect:Bool = true
     var body: some View {
-        Text("Second View")
+        VStack {
+            if imgSelect{
+                Image("疫苗紀錄")
+                .resizable()
+                    .scaledToFit()
+                    .onTapGesture {
+                        self.imgSelect = false
+                }
+            }else{
+                Image("疫苗紀錄1")
+                .resizable()
+                    .scaledToFit().onTapGesture {
+                        self.imgSelect = true
+                    }
+            }
+            Spacer()
+        }
     }
 }
 
 struct Record_GrowthDiary: View {
     var body: some View {
         VStack {
-            Text("成長日記")
+            Image("成長日記")
+            .resizable()
+                .scaledToFit()
             Spacer()
         }
         
@@ -161,6 +189,6 @@ struct Record_GrowthDiary: View {
 
 struct Record_Photo: View {
     var body: some View {
-        Text("Second View")
+        Text("照片紀錄")
     }
 }

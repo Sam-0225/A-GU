@@ -9,19 +9,19 @@
 import SwiftUI
 
 struct PatientInstructionsGridView: View {
+    @State var t:String = "123"
     @State var gridData = [
         
-    DataType(id: 0, rows: [row(id: 0, name: "Matcha Raspberry", pic: "r11", likes: "190"),row(id: 1, name: "Red Velvet", pic: "r12", likes: "98")]),
-
-    DataType(id: 1, rows: [row(id: 0, name: "Cupcakes with Cream and Berries", pic: "r21", likes: "92"),row(id: 1, name: "Pistachio Macarons", pic: "r22", likes: "88")]),
-
-    DataType(id: 2, rows: [row(id: 0, name: "Creamy Strawberry Tart", pic: "r31", likes: "32"),row(id: 1, name: "Delisious Cheesecake", pic: "r32", likes: "160")])
+    DataType(id: 0, rows: [row(id: 0, pic: "Action 1"),row(id: 1, pic: "Action 2")]),
+    DataType(id: 1, rows: [row(id: 0, pic: "Action 3"),row(id: 1, pic: "Action 4")]),
+    DataType(id: 2, rows: [row(id: 0, pic: "Action 5"),row(id: 1, pic: "Action 6")]),
+    DataType(id: 3, rows: [row(id: 0, pic: "Action 7"),row(id: 1, pic: "Action add")])
         
     ]
-    
+      
     var body: some View {
+        ScrollView(.vertical, showsIndicators: false){
         VStack(spacing: 18){
-            
             ForEach(gridData){i in
                 
                 HStack(spacing: 15){
@@ -29,38 +29,23 @@ struct PatientInstructionsGridView: View {
                     ForEach(i.rows){j in
                         
                         VStack(spacing: 20){
-                            
-                            Image(j.pic).resizable().frame(height: 200)
-                            
-                            HStack{
-                                
-                                Text(j.name)
-                                
-                                Spacer(minLength: 0)
-                                
-                            }.padding(.horizontal)
-                            
-                            HStack{
-                                
-                                Spacer()
-                                
-                                Text(j.likes)
-                                
-                                Button(action: {
+                            Image(j.pic)
+                                .resizable()
+                                .frame(height: 244)
+                                .onTapGesture{
+                                    self.t = j.pic
                                     
-                                }) {
-                                    
-                                    Image("heart").renderingMode(.original)
-                                }
-                            }.padding([.horizontal,.bottom])
+                            }
                             
-                        }.background(Color.white)
-                        .cornerRadius(10)
+
+                        }
+                        .background(Color.white)
                     }
                 }
             }
             
         }.padding()
+        }
     }
 }
 

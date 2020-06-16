@@ -10,6 +10,9 @@
 		226B48E42495918F00473DF1 /* PatientInstructionsNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B48E32495918F00473DF1 /* PatientInstructionsNavigationBar.swift */; };
 		226B48E62495FCBF00473DF1 /* PatientInstructionsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B48E52495FCBF00473DF1 /* PatientInstructionsGridView.swift */; };
 		226B48E82495FD0A00473DF1 /* PatientInstructionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B48E72495FD0A00473DF1 /* PatientInstructionsModel.swift */; };
+		226B48EA24963D5000473DF1 /* PatientInstructionsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B48E924963D5000473DF1 /* PatientInstructionsCardView.swift */; };
+		226B48EC24969D3C00473DF1 /* HScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B48EB24969D3C00473DF1 /* HScrollViewController.swift */; };
+		226B48EE249855E100473DF1 /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226B48ED249855E100473DF1 /* HomeView2.swift */; };
 		22B2E8022493DAE000FE0D0A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B2E8012493DAE000FE0D0A /* CalendarView.swift */; };
 		22D8EB7A2464737400F24067 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D8EB792464737400F24067 /* AppDelegate.swift */; };
 		22D8EB7C2464737400F24067 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D8EB7B2464737400F24067 /* SceneDelegate.swift */; };
@@ -32,6 +35,9 @@
 		226B48E32495918F00473DF1 /* PatientInstructionsNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInstructionsNavigationBar.swift; sourceTree = "<group>"; };
 		226B48E52495FCBF00473DF1 /* PatientInstructionsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInstructionsGridView.swift; sourceTree = "<group>"; };
 		226B48E72495FD0A00473DF1 /* PatientInstructionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInstructionsModel.swift; sourceTree = "<group>"; };
+		226B48E924963D5000473DF1 /* PatientInstructionsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientInstructionsCardView.swift; sourceTree = "<group>"; };
+		226B48EB24969D3C00473DF1 /* HScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HScrollViewController.swift; sourceTree = "<group>"; };
+		226B48ED249855E100473DF1 /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 		22B2E8012493DAE000FE0D0A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		22D8EB762464737400F24067 /* A-Gu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A-Gu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D8EB792464737400F24067 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 				22B2E8012493DAE000FE0D0A /* CalendarView.swift */,
 				226B48E32495918F00473DF1 /* PatientInstructionsNavigationBar.swift */,
 				226B48E52495FCBF00473DF1 /* PatientInstructionsGridView.swift */,
+				226B48E924963D5000473DF1 /* PatientInstructionsCardView.swift */,
+				226B48EB24969D3C00473DF1 /* HScrollViewController.swift */,
+				226B48ED249855E100473DF1 /* HomeView2.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D8EB95246DBDEA00F24067 /* Patient_InstructionsView.swift in Sources */,
+				226B48EA24963D5000473DF1 /* PatientInstructionsCardView.swift in Sources */,
+				226B48EC24969D3C00473DF1 /* HScrollViewController.swift in Sources */,
 				22D8EB7A2464737400F24067 /* AppDelegate.swift in Sources */,
 				226B48E42495918F00473DF1 /* PatientInstructionsNavigationBar.swift in Sources */,
 				22B2E8022493DAE000FE0D0A /* CalendarView.swift in Sources */,
@@ -286,6 +297,7 @@
 				22D8EB9B246DC69600F24067 /* LoginView.swift in Sources */,
 				226B48E62495FCBF00473DF1 /* PatientInstructionsGridView.swift in Sources */,
 				22DB49A2247E84060077B10D /* CardModel.swift in Sources */,
+				226B48EE249855E100473DF1 /* HomeView2.swift in Sources */,
 				22DB49A6247ECD250077B10D /* profileView.swift in Sources */,
 				22D8EB99246DC65F00F24067 /* RecordView.swift in Sources */,
 				22D8EB7E2464737400F24067 /* ContentView.swift in Sources */,

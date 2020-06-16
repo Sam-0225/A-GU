@@ -9,8 +9,18 @@
 import SwiftUI
 
 struct DiscussionView: View {
+    @State var showImageName:String = "Discussion"
     var body: some View {
-        Text("Discussion")
+        HStack {
+            Spacer()
+            Image(showImageName)
+                .resizable()
+                .frame(width: UIScreen.main.bounds.width-30)
+                .onTapGesture {
+                    self.showImageName = "DiscussionDetail"
+            }
+            Spacer()
+        }
     }
 }
 

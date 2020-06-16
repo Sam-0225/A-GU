@@ -9,8 +9,37 @@
 import SwiftUI
 
 struct Patient_InstructionsView: View {
+    
+    @State var leftPercent: CGFloat = 0
+    
     var body: some View {
-        Text("Patient_Instructions")
+        ZStack{
+            NavigationView{
+                GeometryReader{ geometry in
+                    HScrollViewController(pageWidth: geometry.size.width,
+                                          contentSize: CGSize(width: geometry.size.width * 2, height: geometry.size.height),
+                                          leftPercent: self.$leftPercent){
+                        HStack(spacing: 0) {
+                            PatientInstructionsCardView()
+                            .frame(width: UIScreen.main.bounds.width)
+
+                            PatientInstructionsGridView()
+                            .frame(width: UIScreen.main.bounds.width)
+
+
+                        }
+                    }
+                    
+                }.edgesIgnoringSafeArea(.bottom)
+                .navigationBarItems(leading: Spacer())
+            }.navigationViewStyle(StackNavigationViewStyle())
+                .padding(.top)
+            VStack {
+                PatientInstructionsNavigationBar(leftPercent: leftPercent).padding()
+                Spacer()
+            }
+        }
+        
     }
 }
 

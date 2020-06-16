@@ -17,7 +17,7 @@ struct PatientInstructionsNavigationBar: View {
     @State var show = false
     @State var txt = ""
     var body: some View {
-        VStack(alignment:.leading,spacing: 20){
+        VStack(alignment:.leading,spacing: 10){
             HStack {
                 if !self.show{
                     
@@ -48,11 +48,8 @@ struct PatientInstructionsNavigationBar: View {
                             
                             Image(systemName: "xmark").foregroundColor(Color("icon_color_selected"))
                         }
-                        .padding(.horizontal, 8)
                         
-                    }
-                    
-                    else{
+                    }else{
                         
                         Button(action: {
                             
@@ -71,7 +68,6 @@ struct PatientInstructionsNavigationBar: View {
                 .padding(self.show ? 10 : 0)
                 .cornerRadius(20)
             }
-                
             HStack(alignment:.top, spacing: 0){
                 Spacer()
                 VStack(spacing: 3) {
